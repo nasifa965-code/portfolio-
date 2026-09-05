@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Avery — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Jordan Avery, Full-Stack Developer & UI Engineer." />
+
+  <!-- Fonts: Fraunces (display) + Sora (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== ANIMATED BACKGROUND ===================== -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- ===================== EDIT TOOLBAR ===================== -->
+  <div class="edit-toolbar">
+    <button id="edit-mode-toggle" class="edit-toggle" type="button" aria-pressed="false">
+      <span class="edit-toggle-dot"></span>
+      <span class="edit-toggle-label">Edit Mode</span>
+    </button>
+    <button id="export-btn" class="edit-toggle export-btn edit-only" type="button" title="Download your edits as ready-to-commit files">
+      Export Changes
+    </button>
+  </div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="site-header">
+    <nav class="nav tilt-el" data-tilt-max="6">
+      <a href="#top" class="nav-brand" id="nav-brand">JA</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links"><!-- injected --></ul>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="section hero" id="hero">
+      <div class="hero-inner">
+        <p class="eyebrow editable-field" id="hero-role" data-edit-path="personal.role"><!-- injected --></p>
+        <h1 class="hero-name tilt-el editable-field" data-tilt-max="8" id="hero-name" data-edit-path="personal.name"><!-- injected --></h1>
+        <p class="hero-tagline editable-field" id="hero-tagline" data-edit-path="personal.tagline"><!-- injected --></p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Work</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section about" id="about">
+      <div class="section-grid about-grid">
+        <div class="about-photo-wrap tilt-el" data-tilt-max="10">
+          <div class="photo-frame">
+            <img id="profile-photo" src="" alt="Profile photo" loading="lazy" />
+            <div class="photo-upload-overlay edit-only" data-target="profile-photo">
+              <label class="upload-btn">
+                Upload photo
+                <input type="file" accept="image/*" class="upload-input" data-role="profile" hidden />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="about-copy glass-card tilt-el" data-tilt-max="5">
+          <h2 class="section-title">About</h2>
+          <div id="about-bio" class="editable-field" data-edit-path="personal.bio" data-multiline="true"><!-- injected --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="section skills" id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-bars" id="skill-bars"><!-- injected --></div>
+        <div class="tool-tags glass-card tilt-el" data-tilt-max="4">
+          <h3 class="subheading">Tools &amp; Stack</h3>
+          <div class="tag-row" id="tool-tags"><!-- injected --></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="section projects" id="projects">
+      <div class="section-heading-row">
+        <h2 class="section-title">Projects</h2>
+        <button class="btn btn-outline edit-only" id="add-project-btn" type="button">+ Add Project</button>
+      </div>
+      <div class="project-grid" id="project-grid"><!-- injected --></div>
+    </section>
+
+    <!-- ===================== EXPERIENCE / EDUCATION ===================== -->
+    <section class="section experience" id="experience">
+      <h2 class="section-title">Experience &amp; Education</h2>
+      <div class="timeline" id="timeline"><!-- injected --></div>
+    </section>
+
+    <!-- ===================== RESUME ===================== -->
+    <section class="section resume" id="resume">
+      <div class="glass-card resume-card tilt-el" data-tilt-max="5">
+        <div>
+          <h2 class="section-title">Resume</h2>
+          <p>Download a full copy of my resume as a PDF.</p>
+        </div>
+        <a href="assets/resume/resume.pdf" download class="btn btn-primary" id="resume-btn">Download Resume</a>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section contact" id="contact">
+      <div class="section-grid contact-grid">
+        <div>
+          <h2 class="section-title">Get in touch</h2>
+          <p>Have a project, a role, or just want to say hi? My inbox is open.</p>
+          <ul class="social-list" id="social-list"><!-- injected --></ul>
+        </div>
+        <form class="contact-form glass-card tilt-el" data-tilt-max="4" id="contact-form">
+          <p class="form-note">
+            This is a static site with no backend, so this form doesn't send email yet.
+            Replace the <code>handleSubmit</code> function in <code>script.js</code> with a
+            call to a service like Formspree, EmailJS, or your own API.
+          </p>
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. Built with purple gradients and too much coffee.</p>
+    <ul class="footer-nav" id="footer-nav"><!-- injected --></ul>
+  </footer>
+
+  <!-- ===================== ADD PROJECT MODAL ===================== -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <form class="modal glass-card" id="add-project-form">
+      <h3 id="modal-heading">Add Project</h3>
+      <input type="hidden" name="editingId" value="" />
+      <label>Title <input type="text" name="title" required /></label>
+      <label>Description <textarea name="description" rows="3" required></textarea></label>
+      <label>Tech (comma separated) <input type="text" name="tech" placeholder="React, Node.js, Postgres" /></label>
+      <label>Live URL <input type="url" name="liveUrl" placeholder="https://" /></label>
+      <label>Repo URL <input type="url" name="repoUrl" placeholder="https://github.com/..." /></label>
+      <label>
+        Image <span class="modal-hint">(leave blank to keep current image)</span>
+        <input type="file" name="image" accept="image/*" />
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="modal-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="modal-submit">Add Project</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
